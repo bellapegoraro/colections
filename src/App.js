@@ -1,13 +1,14 @@
 import "./App.css";
-import { Link, Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import RickAndMorty from "./pages/RickAndMorty/index";
 import Pokemon from "./pages/Pokemon";
+import Header from "./components/header/index";
 
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
-      <Link to="/list/rick-and-morty">Rick And Morty</Link>
-      <Link to="/list/pokemons">Pokemons</Link>
+      {location.pathname === "/" ? <Header /> : null}
       <Switch>
         <Route exact path="/list/:item">
           <RickAndMorty />

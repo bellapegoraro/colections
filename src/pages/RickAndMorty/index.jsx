@@ -1,4 +1,4 @@
-import Request from "../../components/request";
+import Request from "../../components/apiRequest/request";
 
 const RickAndMorty = () => {
   return (
