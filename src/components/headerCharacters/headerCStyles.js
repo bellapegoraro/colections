@@ -18,7 +18,7 @@ export const HeaderDiv = styled.div`
     border: none;
     outline: none;
     height: 21px;
-    margin-left: 22%;
+    margin-left: 18%;
     margin-right: 1%;
   }
 
@@ -62,7 +62,7 @@ export const PageButtonNext = styled.button`
 `;
 
 export const ChangeListButton = styled.button`
-  width: 105px;
+  width: 150px;
   height: 25px;
   margin-left: 7%;
 `;

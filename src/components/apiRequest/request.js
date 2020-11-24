@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Axios from "axios";
 import Characters from "../characters/characters";
 import HeaderCharacters from "../headerCharacters/index";
@@ -59,9 +59,8 @@ const Request = () => {
     listItem === "rick-and-morty"
       ? getData(rickAndMortyUrl)
       : getData(pokemonUrl);
-
-    console.log(characterList);
   }, [page, path]);
+
   return (
     <>
       <HeaderCharacters
@@ -74,7 +73,7 @@ const Request = () => {
         page={page}
       ></HeaderCharacters>
       <DivCharacters>
-        <Characters characterList={characterList} filter={filter} />
+        <Characters characterList={characterList} filter={filter} item={item} />
       </DivCharacters>
     </>
   );

@@ -3,15 +3,19 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
+import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
 
 import styled from "styled-components";
 
 export const StyledCard = styled(Card)`
   width: 180px;
-  height: 190px;
+  height: 220px;
   background-color: #fff3ed;
 `;
-export const StyledCardActionArea = styled(CardActionArea)``;
+export const StyledCardActionArea = styled(CardActionArea)`
+  background-color: #fff3ed;
+`;
 
 export const StyledCardContent = styled(CardContent)`
   background-color: #fff3ed;
@@ -23,7 +27,13 @@ export const StyledCardMedia = styled(CardMedia)`
 `;
 
 export const StyledTypography = styled(Typography)`
-  text-align: center;
+  text-align: right;
   font-size: 14px;
   background-color: #fff3ed;
+  height: 20px;
+`;
+
+export const StyledCardActions = styled(CardActions)`
+  background-color: #fff3ed;
+  height: 10px;
 `;

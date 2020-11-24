@@ -1,40 +1,17 @@
-import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
-import {
-  StyledCard,
-  StyledCardMedia,
-  StyledCardActionArea,
-  StyledCardContent,
-  StyledTypography,
-} from "./characterStyle";
-const Characters = ({ characterList, filter }) => {
+import CharacterListPokemon from "../../pages/Pokemon/charactersList";
+import CharacterListRickAndMorty from "../../pages/RickAndMorty/charactersList";
+
+const Characters = ({ characterList, filter, item }) => {
   return (
     <>
-      {filter.length !== 0
-        ? filter.map(({ name, image }, index) => (
-            <StyledCard key={index}>
-              <StyledCardActionArea>
-                <StyledCardMedia image={image} title={name} />
-                <StyledCardContent>
-                  <StyledTypography variant="p" component="p">
-                    {name}
-                  </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
-            </StyledCard>
-          ))
-        : characterList.map(({ name, image }, index) => (
-            <StyledCard key={index}>
-              <StyledCardActionArea>
-                <StyledCardMedia image={image} title={name} />
-                <StyledCardContent>
-                  <StyledTypography variant="p" component="p">
-                    {name}
-                  </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
-            </StyledCard>
-          ))}
+      {item === "pokemons" ? (
+        <CharacterListPokemon characterList={characterList} filter={filter} />
+      ) : (
+        <CharacterListRickAndMorty
+          characterList={characterList}
+          filter={filter}
+        />
+      )}
     </>
   );
 };
