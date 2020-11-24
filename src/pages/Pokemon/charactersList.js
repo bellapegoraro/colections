@@ -9,7 +9,7 @@ import {
   StyledCardContent,
 } from "../../components/characters/characterStyle";
 
-const CharacterList = ({ characterList, filter }) => {
+const CharacterList = ({ characterList, filter, favorite }) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
@@ -59,7 +59,17 @@ const CharacterList = ({ characterList, filter }) => {
                 </StyledCardContent>
               </StyledCardActionArea>
               <StyledCardActions>
-                <Button size="small">
+                <Button
+                  size="small"
+                  onClick={() =>
+                    favorite(
+                      name,
+                      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getUrlImagePokemon(
+                        url
+                      )}.png`
+                    )
+                  }
+                >
                   <FavoriteIcon />
                 </Button>
               </StyledCardActions>

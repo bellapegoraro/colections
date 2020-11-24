@@ -9,7 +9,7 @@ import {
   StyledCardContent,
 } from "../../components/characters/characterStyle";
 
-const CharacterList = ({ characterList, filter }) => {
+const CharacterList = ({ characterList, filter, favorite }) => {
   return (
     <>
       {filter.length !== 0
@@ -46,8 +46,7 @@ const CharacterList = ({ characterList, filter }) => {
                 </StyledCardContent>
               </StyledCardActionArea>
               <StyledCardActions>
-                {/* <Button size="small" onClick={() => algumaFunção(name, image)}> */}
-                <Button size="small">
+                <Button size="small" onClick={() => favorite(name, image)}>
                   <FavoriteIcon />
                 </Button>
               </StyledCardActions>
