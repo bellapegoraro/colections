@@ -4,7 +4,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
 
 import styled from "styled-components";
 
@@ -28,7 +27,6 @@ export const StyledCardMedia = styled(CardMedia)`
 
 export const StyledTypography = styled(Typography)`
   text-align: right;
-  font-size: 14px;
   background-color: #fff3ed;
   height: 20px;
 `;

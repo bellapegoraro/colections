@@ -24,29 +24,29 @@ const CharacterList = ({ characterList, filter }) => {
                 </StyledCardContent>
               </StyledCardActionArea>
               <StyledCardActions>
-                <Button size="small">
+                <Button size="small" onClick={(e) => console.log(e)}>
                   <FavoriteIcon />
                 </Button>
               </StyledCardActions>
             </StyledCard>
           ))
-        : characterList.map(({ name, image, url }, index) => (
+        : characterList.map(({ name, image }, index) => (
             <StyledCard key={index}>
               <StyledCardActionArea>
                 <StyledCardMedia
-                  StyledCardMedia
                   component="img"
                   alt="pokemon"
                   image={image}
                   title={name}
                 />
                 <StyledCardContent>
-                  <StyledTypography variant="subtitle1" component="p">
+                  <StyledTypography variant="caption" component="p">
                     {name}
                   </StyledTypography>
                 </StyledCardContent>
               </StyledCardActionArea>
               <StyledCardActions>
+                {/* <Button size="small" onClick={() => algumaFunção(name, image)}> */}
                 <Button size="small">
                   <FavoriteIcon />
                 </Button>

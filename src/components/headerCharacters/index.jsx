@@ -28,7 +28,7 @@ const HeaderCharacters = ({
       <input onChange={(e) => handleInput(e)}></input>
       <button onClick={() => handleFilter()}>Pesquisar</button>
       <PageButtonPrevious onClick={() => previousPage()}>
-        <ArrowBackIcon />{" "}
+        <ArrowBackIcon />
       </PageButtonPrevious>
       <span>{page}</span>
       <PageButtonNext onClick={() => nextPage()}>
