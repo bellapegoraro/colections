@@ -29,7 +29,7 @@ const HeaderCharacters = ({
 
       <input onChange={(e) => handleInput(e)}></input>
       <button onClick={() => handleFilter()}>Pesquisar</button>
-      {/* {listItem === "rick-and-morty" ? (
+      {listItem === "rick-and-morty" ? (
         <div>
           <StyledLink to="/favorites/rick-and-morty">
             <FavoriteIcon />
@@ -41,7 +41,7 @@ const HeaderCharacters = ({
             <FavoriteIcon />
           </StyledLink>
         </div>
-      )} */}
+      )}
       <PageButtonPrevious onClick={() => previousPage()}>
         <ArrowBackIcon />
       </PageButtonPrevious>

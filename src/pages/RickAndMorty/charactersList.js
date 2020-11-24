@@ -24,7 +24,7 @@ const CharacterList = ({ characterList, filter, favorite }) => {
                 </StyledCardContent>
               </StyledCardActionArea>
               <StyledCardActions>
-                <Button size="small" onClick={(e) => console.log(e)}>
+                <Button size="small" onClick={() => favorite(filter)}>
                   <FavoriteIcon />
                 </Button>
               </StyledCardActions>

@@ -1,5 +1,5 @@
 import Request from "../../components/apiRequest/request";
-import { Favorite } from "../../components/Favorites/index";
+import { Favorite } from "../../components/Favorites/favorite";
 
 const Pokemon = () => {
   return (
