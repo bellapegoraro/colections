@@ -1,10 +1,9 @@
 import Request from "../../components/apiRequest/request";
-import { Favorite } from "../../components/Favorites/favorite";
 
 const RickAndMorty = () => {
   return (
     <div>
-      <Request favorite={Favorite} />
+      <Request />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import Characters from "../characters/characters";
 import HeaderCharacters from "../headerCharacters/index";
 import { DivCharacters } from "./requestStyle";
 
-const Request = ({ favorite }) => {
+const Request = () => {
   const { item } = useParams();
   const [characterList, setCharacterList] = useState([]);
   const [filter, setFilter] = useState([]);
@@ -73,12 +73,7 @@ const Request = ({ favorite }) => {
         page={page}
       ></HeaderCharacters>
       <DivCharacters>
-        <Characters
-          characterList={characterList}
-          filter={filter}
-          item={item}
-          favorite={favorite}
-        />
+        <Characters characterList={characterList} filter={filter} item={item} />
       </DivCharacters>
     </>
   );

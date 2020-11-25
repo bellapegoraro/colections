@@ -1,54 +1,63 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Button from "@material-ui/core/Button";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
 import {
   StyledCard,
   StyledCardMedia,
-  StyledCardActionArea,
   StyledTypography,
   StyledCardActions,
-  StyledCardContent,
+  ButtonStyled,
 } from "../../components/characters/characterStyle";
+import { useState } from "react";
 
-const CharacterList = ({ characterList, filter, favorite }) => {
+const CharacterList = ({ characterList, filter }) => {
+  const [myFavRM, setMyFavRM] = useState([]);
+
+  const favorite = (character) => {
+    setMyFavRM([...myFavRM, character]);
+    localStorage.setItem("myFavRM", JSON.stringify(myFavRM));
+    console.log(myFavRM);
+  };
+
   return (
     <>
       {filter.length !== 0
-        ? filter.map(({ name, image }, index) => (
+        ? filter.map((filtered, index) => (
             <StyledCard key={index}>
-              <StyledCardActionArea>
-                <StyledCardMedia image={image} title={name} />
-                <StyledCardContent>
+              <CardActionArea>
+                <StyledCardMedia image={filtered.image} title={filtered.name} />
+                <CardContent>
                   <StyledTypography variant="p" component="p">
-                    {name}
+                    {filtered.name}
                   </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
+                </CardContent>
+              </CardActionArea>
               <StyledCardActions>
-                <Button size="small" onClick={() => favorite(filter)}>
+                <ButtonStyled size="small" onClick={() => favorite(filter)}>
                   <FavoriteIcon />
-                </Button>
+                </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
           ))
-        : characterList.map(({ name, image }, index) => (
+        : characterList.map((character, index) => (
             <StyledCard key={index}>
-              <StyledCardActionArea>
+              <CardActionArea>
                 <StyledCardMedia
                   component="img"
                   alt="pokemon"
-                  image={image}
-                  title={name}
+                  image={character.image}
+                  title={character.name}
                 />
-                <StyledCardContent>
+                <CardContent>
                   <StyledTypography variant="caption" component="p">
-                    {name}
+                    {character.name}
                   </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
+                </CardContent>
+              </CardActionArea>
               <StyledCardActions>
-                <Button size="small" onClick={() => favorite(name, image)}>
+                <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
-                </Button>
+                </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
           ))}

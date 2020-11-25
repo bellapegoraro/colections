@@ -4,10 +4,13 @@ import {
   PageButtonPrevious,
   PageButtonNext,
   ChangeListButton,
+  FavoriteDiv,
+  StyledLinkFav,
 } from "./headerCStyles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+
 const HeaderCharacters = ({
   handlePath,
   listItem,
@@ -30,17 +33,17 @@ const HeaderCharacters = ({
       <input onChange={(e) => handleInput(e)}></input>
       <button onClick={() => handleFilter()}>Pesquisar</button>
       {listItem === "rick-and-morty" ? (
-        <div>
-          <StyledLink to="/favorites/rick-and-morty">
+        <FavoriteDiv>
+          <StyledLinkFav to="/favorites/rick-and-morty">
             <FavoriteIcon />
-          </StyledLink>
-        </div>
+          </StyledLinkFav>
+        </FavoriteDiv>
       ) : (
-        <div>
-          <StyledLink to="/favorites/pokemons">
+        <FavoriteDiv>
+          <StyledLinkFav to="/favorites/pokemons">
             <FavoriteIcon />
-          </StyledLink>
-        </div>
+          </StyledLinkFav>
+        </FavoriteDiv>
       )}
       <PageButtonPrevious onClick={() => previousPage()}>
         <ArrowBackIcon />

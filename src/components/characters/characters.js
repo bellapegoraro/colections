@@ -5,16 +5,11 @@ const Characters = ({ characterList, filter, item, favorite }) => {
   return (
     <>
       {item === "pokemons" ? (
-        <CharacterListPokemon
-          characterList={characterList}
-          filter={filter}
-          favorite={favorite}
-        />
+        <CharacterListPokemon characterList={characterList} filter={filter} />
       ) : (
         <CharacterListRickAndMorty
           characterList={characterList}
           filter={filter}
-          favorite={favorite}
         />
       )}
     </>

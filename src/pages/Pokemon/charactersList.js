@@ -1,15 +1,24 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import Button from "@material-ui/core/Button";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+
 import {
   StyledCard,
   StyledCardMedia,
-  StyledCardActionArea,
   StyledTypography,
   StyledCardActions,
-  StyledCardContent,
+  ButtonStyled,
 } from "../../components/characters/characterStyle";
+import { useState } from "react";
 
-const CharacterList = ({ characterList, filter, favorite }) => {
+const CharacterList = ({ characterList, filter }) => {
+  const [myFavPokemon, setMyFavPokemon] = useState([]);
+
+  const favorite = (character) => {
+    setMyFavPokemon([...myFavPokemon, character]);
+    localStorage.setItem("myFavPokemon", JSON.stringify(myFavPokemon));
+  };
+
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
@@ -17,61 +26,51 @@ const CharacterList = ({ characterList, filter, favorite }) => {
   return (
     <>
       {filter.length !== 0
-        ? filter.map(({ name, url }, index) => (
+        ? filter.map((filtered, index) => (
             <StyledCard key={index}>
-              <StyledCardActionArea>
+              <CardActionArea>
                 <StyledCardMedia
                   component="img"
                   alt="pokemon"
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getUrlImagePokemon(
-                    url
+                    filtered.url
                   )}.png`}
-                  title={name}
+                  title={filtered.name}
                 />
-                <StyledCardContent>
+                <CardContent>
                   <StyledTypography variant="p" component="p">
-                    {name}
+                    {filtered.name}
                   </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
+                </CardContent>
+              </CardActionArea>
               <StyledCardActions>
-                <Button size="small" onClick={() => favorite(filter)}>
+                <ButtonStyled size="small" onClick={() => favorite(filtered)}>
                   <FavoriteIcon />
-                </Button>
+                </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
           ))
-        : characterList.map(({ name, url }, index) => (
+        : characterList.map((character, index) => (
             <StyledCard key={index}>
-              <StyledCardActionArea>
+              <CardActionArea>
                 <StyledCardMedia
                   component="img"
                   alt="pokemon"
                   src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getUrlImagePokemon(
-                    url
+                    character.url
                   )}.png`}
-                  title={name}
+                  title={character.name}
                 />
-                <StyledCardContent>
+                <CardContent>
                   <StyledTypography variant="subtitle1" component="p">
-                    {name}
+                    {character.name}
                   </StyledTypography>
-                </StyledCardContent>
-              </StyledCardActionArea>
+                </CardContent>
+              </CardActionArea>
               <StyledCardActions>
-                <Button
-                  size="small"
-                  onClick={() =>
-                    favorite(
-                      name,
-                      `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getUrlImagePokemon(
-                        url
-                      )}.png`
-                    )
-                  }
-                >
+                <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
-                </Button>
+                </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
           ))}
