@@ -1,9 +1,31 @@
-import Request from "../../components/apiRequest/request";
+import List from "../../components/List/list";
 
-const RickAndMorty = () => {
+const RickAndMorty = ({
+  characterList,
+  getData,
+  input,
+  filter,
+  nextPage,
+  previousPage,
+  handleFilter,
+  handleInput,
+  page,
+  favoriteRM,
+}) => {
   return (
     <div>
-      <Request />
+      <List
+        characterList={characterList}
+        getData={getData}
+        input={input}
+        filter={filter}
+        nextPage={nextPage}
+        previousPage={previousPage}
+        handleFilter={handleFilter}
+        handleInput={handleInput}
+        page={page}
+        favoriteRM={favoriteRM}
+      />
     </div>
   );
 };

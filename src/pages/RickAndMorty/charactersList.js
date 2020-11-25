@@ -1,4 +1,5 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import {
@@ -7,18 +8,9 @@ import {
   StyledTypography,
   StyledCardActions,
   ButtonStyled,
-} from "../../components/characters/characterStyle";
-import { useState } from "react";
+} from "../../components/List/listStyle";
 
-const CharacterList = ({ characterList, filter }) => {
-  const [myFavRM, setMyFavRM] = useState([]);
-
-  const favorite = (character) => {
-    setMyFavRM([...myFavRM, character]);
-    localStorage.setItem("myFavRM", JSON.stringify(myFavRM));
-    console.log(myFavRM);
-  };
-
+const CharacterList = ({ characterList, filter, favoriteRM }) => {
   return (
     <>
       {filter.length !== 0
@@ -33,8 +25,11 @@ const CharacterList = ({ characterList, filter }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(filter)}>
+                <ButtonStyled size="small" onClick={() => favoriteRM(filter)}>
                   <FavoriteIcon />
+                </ButtonStyled>
+                <ButtonStyled size="small">
+                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
@@ -55,8 +50,14 @@ const CharacterList = ({ characterList, filter }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(character)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => favoriteRM(character)}
+                >
                   <FavoriteIcon />
+                </ButtonStyled>
+                <ButtonStyled size="small">
+                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>

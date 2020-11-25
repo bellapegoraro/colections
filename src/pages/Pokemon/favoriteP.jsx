@@ -1,7 +1,7 @@
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import { DivCharacters } from "../../components/apiRequest/requestStyle";
+import { DivCharacters } from "../../components/List/listStyle";
 import { HeaderDiv } from "../../components/headerCharacters/headerCStyles";
 import {
   StyledCard,
@@ -9,11 +9,9 @@ import {
   StyledTypography,
   StyledCardActions,
   ButtonStyled,
-} from "../../components/characters/characterStyle";
+} from "../../components/List/listStyle";
 
-const FavoritePokemon = () => {
-  const favorite = window.localStorage.getItem("myFavPokemon");
-
+const FavoritePokemon = ({ myFavPokemon }) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
@@ -25,7 +23,7 @@ const FavoritePokemon = () => {
         <p>Seus Pokemons favoritos</p>
       </HeaderDiv>
       <DivCharacters>
-        {JSON.parse(favorite).map(({ name, url }, index) => (
+        {myFavPokemon.map(({ name, url }, index) => (
           <StyledCard key={index}>
             <CardActionArea>
               <StyledCardMedia
@@ -43,9 +41,9 @@ const FavoritePokemon = () => {
               </CardContent>
             </CardActionArea>
             <StyledCardActions>
-              {/* <ButtonStyled size="small" onClick={() => favorite(character)}>
-            <FavoriteIcon />
-          </ButtonStyled> */}
+              <ButtonStyled size="small">
+                <FavoriteBorderIcon />
+              </ButtonStyled>
             </StyledCardActions>
           </StyledCard>
         ))}

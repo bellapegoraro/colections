@@ -55,6 +55,16 @@ export const HeaderDiv = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
+  padding: 10px;
+  color: #444444;
+  :hover {
+    color: whitesmoke;
+  }
+`;
+
+export const StyledLinkP = styled(Link)`
+  text-decoration: none;
+  padding: 5px 40px 5px 30px;
   color: #444444;
   :hover {
     color: whitesmoke;

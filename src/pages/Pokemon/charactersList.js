@@ -1,30 +1,28 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-
 import {
   StyledCard,
   StyledCardMedia,
   StyledTypography,
   StyledCardActions,
   ButtonStyled,
-} from "../../components/characters/characterStyle";
-import { useState } from "react";
+} from "../../components/List/listStyle";
 
-const CharacterList = ({ characterList, filter }) => {
-  const [myFavPokemon, setMyFavPokemon] = useState([]);
-
-  const favorite = (character) => {
-    setMyFavPokemon([...myFavPokemon, character]);
-    localStorage.setItem("myFavPokemon", JSON.stringify(myFavPokemon));
-  };
-
+const CharacterList = ({
+  characterList,
+  filter,
+  removeFavoriteP,
+  favoriteP,
+}) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
   };
   return (
     <>
+      {console.log(favoriteP)}
       {filter.length !== 0
         ? filter.map((filtered, index) => (
             <StyledCard key={index}>
@@ -44,8 +42,17 @@ const CharacterList = ({ characterList, filter }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(filtered)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => console.log(filtered)}
+                >
                   <FavoriteIcon />
+                </ButtonStyled>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => removeFavoriteP(filtered)}
+                >
+                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
@@ -68,8 +75,20 @@ const CharacterList = ({ characterList, filter }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(character)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => {
+                    favoriteP(character);
+                    console.log(favoriteP);
+                  }}
+                >
                   <FavoriteIcon />
+                </ButtonStyled>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => removeFavoriteP(character)}
+                >
+                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>

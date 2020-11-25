@@ -1,7 +1,7 @@
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
-import { DivCharacters } from "../../components/apiRequest/requestStyle";
+import { DivCharacters } from "../../components/List/listStyle";
 import { HeaderDiv } from "../../components/headerCharacters/headerCStyles";
 import {
   StyledCard,
@@ -9,18 +9,16 @@ import {
   StyledTypography,
   StyledCardActions,
   ButtonStyled,
-} from "../../components/characters/characterStyle";
+} from "../../components/List/listStyle";
 
-const FavoriteRickAndMorty = () => {
-  const favorite = window.localStorage.getItem("myFavRM");
-
+const FavoriteRickAndMorty = ({ myFavRM }) => {
   return (
     <>
       <HeaderDiv>
         <p>Seus personagens favoritos</p>
       </HeaderDiv>
       <DivCharacters>
-        {JSON.parse(favorite).map(({ name, image }, index) => (
+        {myFavRM.map(({ name, image }, index) => (
           <StyledCard key={index}>
             <CardActionArea>
               <StyledCardMedia
@@ -36,9 +34,9 @@ const FavoriteRickAndMorty = () => {
               </CardContent>
             </CardActionArea>
             <StyledCardActions>
-              {/* <ButtonStyled size="small" onClick={() => favorite(character)}>
-              <FavoriteIcon />
-            </ButtonStyled> */}
+              <ButtonStyled size="small">
+                <FavoriteBorderIcon />
+              </ButtonStyled>
             </StyledCardActions>
           </StyledCard>
         ))}

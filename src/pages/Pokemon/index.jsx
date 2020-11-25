@@ -1,8 +1,35 @@
-import Request from "../../components/apiRequest/request";
-const Pokemon = () => {
+import List from "../../components/List/list";
+const Pokemon = ({
+  characterList,
+  getData,
+  input,
+  filter,
+  nextPage,
+  previousPage,
+  handleFilter,
+  handleInput,
+  page,
+  iaiGalera,
+  removeFavoriteP,
+  favoriteP,
+}) => {
   return (
     <div>
-      <Request />
+      {console.log(favoriteP)}
+      <List
+        characterList={characterList}
+        getData={getData}
+        input={input}
+        filter={filter}
+        nextPage={nextPage}
+        previousPage={previousPage}
+        handleFilter={handleFilter}
+        handleInput={handleInput}
+        page={page}
+        iaiGalera={iaiGalera}
+        removeFavoriteP={removeFavoriteP}
+        favoriteP={favoriteP}
+      />
     </div>
   );
 };

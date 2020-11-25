@@ -6,6 +6,7 @@ import {
   ChangeListButton,
   FavoriteDiv,
   StyledLinkFav,
+  StyledLinkP,
 } from "./headerCStyles";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
@@ -24,7 +25,7 @@ const HeaderCharacters = ({
     <HeaderDiv>
       <ChangeListButton onClick={() => handlePath()}>
         {listItem === "rick-and-morty" ? (
-          <StyledLink to="/list/pokemons">Pokemon</StyledLink>
+          <StyledLinkP to="/list/pokemons">Pokemons</StyledLinkP>
         ) : (
           <StyledLink to="/list/rick-and-morty">Rick and Morty</StyledLink>
         )}

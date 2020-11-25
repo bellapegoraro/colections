@@ -1,16 +1,25 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Axios from "axios";
-import Characters from "../characters/characters";
+import CharacterListPokemon from "../../pages/Pokemon/charactersList";
+import CharacterListRickAndMorty from "../../pages/RickAndMorty/charactersList";
 import HeaderCharacters from "../headerCharacters/index";
-import { DivCharacters } from "./requestStyle";
+import { DivCharacters } from "./listStyle";
 
-const Request = () => {
+const List = ({
+  characterList,
+  getData,
+  input,
+  filter,
+  nextPage,
+  previousPage,
+  handleFilter,
+  handleInput,
+  page,
+  favoriteP,
+  favoriteRM,
+  removeFavoriteP,
+}) => {
   const { item } = useParams();
-  const [characterList, setCharacterList] = useState([]);
-  const [filter, setFilter] = useState([]);
-  const [input, setInput] = useState("");
-  const [page, setPage] = useState(1);
   const [listItem, setListItem] = useState(item);
   const rickAndMortyUrl = `https://rickandmortyapi.com/api/character/?page=${page}`;
   const pokemonUrl = `https://pokeapi.co/api/v2/pokemon?offset=${
@@ -24,36 +33,10 @@ const Request = () => {
     return pokemonUrl;
   });
 
-  const getData = async (url) => {
-    const response = await Axios.get(url);
-    setCharacterList([...response.data.results]);
-  };
-
-  const nextPage = () => {
-    setPage(page + 1);
-  };
-
-  const previousPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
   const handlePath = () =>
     listItem === "rick-and-morty"
       ? (setPath(pokemonUrl), setListItem("pokemons"))
       : (setPath(rickAndMortyUrl), setListItem("rick-and-morty"));
-
-  const handleInput = (e) => {
-    setInput(e.target.value);
-  };
-
-  const handleFilter = () => {
-    const filtered = characterList.filter(
-      (character) => character.name === input
-    );
-    setFilter([...filtered]);
-  };
 
   useEffect(() => {
     listItem === "rick-and-morty"
@@ -63,6 +46,7 @@ const Request = () => {
 
   return (
     <>
+      {console.log(favoriteP)}
       <HeaderCharacters
         handleInput={handleInput}
         handlePath={handlePath}
@@ -73,10 +57,23 @@ const Request = () => {
         page={page}
       ></HeaderCharacters>
       <DivCharacters>
-        <Characters characterList={characterList} filter={filter} item={item} />
+        {item === "pokemons" ? (
+          <CharacterListPokemon
+            characterList={characterList}
+            filter={filter}
+            removeFavoriteP={removeFavoriteP}
+            favoriteP={favoriteP}
+          />
+        ) : (
+          <CharacterListRickAndMorty
+            characterList={characterList}
+            filter={filter}
+            favoriteRM={favoriteRM}
+          />
+        )}
       </DivCharacters>
     </>
   );
 };
 
-export default Request;
+export default List;
