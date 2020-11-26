@@ -50,9 +50,9 @@ const CharacterList = ({ characterList, filter, favorite, removeRM }) => {
                 <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
                 </ButtonStyled>
-                <ButtonStyled size="small" onClick={() => removeRM(character)}>
+                {/* <ButtonStyled size="small" onClick={() => removeRM(character)}>
                   <FavoriteBorderIcon />
-                </ButtonStyled>
+                </ButtonStyled> */}
               </StyledCardActions>
             </StyledCard>
           ))}

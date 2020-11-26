@@ -63,9 +63,9 @@ const CharacterList = ({ characterList, filter, removeP, favorite }) => {
                 <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
                 </ButtonStyled>
-                <ButtonStyled size="small" onClick={() => removeP(character)}>
+                {/* <ButtonStyled size="small" onClick={() => removeP(character)}>
                   <FavoriteBorderIcon />
-                </ButtonStyled>
+                </ButtonStyled> */}
               </StyledCardActions>
             </StyledCard>
           ))}
