@@ -8,6 +8,10 @@ import Button from "@material-ui/core/Button";
 export const StyledCard = styled(Card)`
   width: 180px;
   height: 220px;
+
+  @media (max-width: 500px) {
+    width: 140px;
+  }
 `;
 
 export const StyledCardMedia = styled(CardMedia)`
@@ -38,4 +42,10 @@ export const DivCharacters = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  @media (max-width: 500px) {
+    justify-content: center;
+    width: 100vw;
+    padding: 5px 0 0 0;
+  }
 `;

@@ -2,7 +2,11 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import { DivCharacters } from "../../components/List/listStyle";
-import { HeaderDiv } from "../../components/headerCharacters/headerCStyles";
+import {
+  HeaderDiv,
+  BackDivFav,
+  StyledLink,
+} from "../../components/headerCharacters/headerCStyles";
 import {
   StyledCard,
   StyledCardMedia,
@@ -11,7 +15,7 @@ import {
   ButtonStyled,
 } from "../../components/List/listStyle";
 
-const FavoritePokemon = ({ myFavPokemon }) => {
+const FavoritePokemon = ({ myFavPokemon, removeP }) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
@@ -21,27 +25,30 @@ const FavoritePokemon = ({ myFavPokemon }) => {
     <>
       <HeaderDiv>
         <p>Seus Pokemons favoritos</p>
+        <BackDivFav>
+          <StyledLink to="/list/pokemons">Voltar</StyledLink>
+        </BackDivFav>
       </HeaderDiv>
       <DivCharacters>
-        {myFavPokemon.map(({ name, url }, index) => (
+        {myFavPokemon.map((character, index) => (
           <StyledCard key={index}>
             <CardActionArea>
               <StyledCardMedia
                 component="img"
                 alt="pokemon"
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${getUrlImagePokemon(
-                  url
+                  character.url
                 )}.png`}
-                title={name}
+                title={character.name}
               />
               <CardContent>
                 <StyledTypography variant="caption" component="p">
-                  {name}
+                  {character.name}
                 </StyledTypography>
               </CardContent>
             </CardActionArea>
             <StyledCardActions>
-              <ButtonStyled size="small">
+              <ButtonStyled size="small" onClick={() => removeP(character)}>
                 <FavoriteBorderIcon />
               </ButtonStyled>
             </StyledCardActions>

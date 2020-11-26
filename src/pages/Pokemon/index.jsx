@@ -1,21 +1,40 @@
 import List from "../../components/List/list";
-const Pokemon = ({
-  characterList,
-  getData,
-  input,
-  filter,
-  nextPage,
-  previousPage,
-  handleFilter,
-  handleInput,
-  page,
-  iaiGalera,
-  removeFavoriteP,
-  favoriteP,
-}) => {
+import { useState } from "react";
+import Axios from "axios";
+
+const Pokemon = ({ favorite, removeP }) => {
+  const [characterList, setCharacterList] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [input, setInput] = useState("");
+  const [page, setPage] = useState(1);
+
+  const getData = async (url) => {
+    const response = await Axios.get(url);
+    setCharacterList([...response.data.results]);
+  };
+
+  const nextPage = () => {
+    setPage(page + 1);
+  };
+
+  const previousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
+  const handleFilter = () => {
+    const filtered = characterList.filter(
+      (character) => character.name === input
+    );
+    setFilter([...filtered]);
+  };
   return (
     <div>
-      {console.log(favoriteP)}
       <List
         characterList={characterList}
         getData={getData}
@@ -26,9 +45,8 @@ const Pokemon = ({
         handleFilter={handleFilter}
         handleInput={handleInput}
         page={page}
-        iaiGalera={iaiGalera}
-        removeFavoriteP={removeFavoriteP}
-        favoriteP={favoriteP}
+        removeP={removeP}
+        favorite={favorite}
       />
     </div>
   );

@@ -15,9 +15,9 @@ const List = ({
   handleFilter,
   handleInput,
   page,
-  favoriteP,
-  favoriteRM,
-  removeFavoriteP,
+  favorite,
+  removeP,
+  removeRM,
 }) => {
   const { item } = useParams();
   const [listItem, setListItem] = useState(item);
@@ -46,7 +46,6 @@ const List = ({
 
   return (
     <>
-      {console.log(favoriteP)}
       <HeaderCharacters
         handleInput={handleInput}
         handlePath={handlePath}
@@ -61,14 +60,15 @@ const List = ({
           <CharacterListPokemon
             characterList={characterList}
             filter={filter}
-            removeFavoriteP={removeFavoriteP}
-            favoriteP={favoriteP}
+            removeP={removeP}
+            favorite={favorite}
           />
         ) : (
           <CharacterListRickAndMorty
             characterList={characterList}
             filter={filter}
-            favoriteRM={favoriteRM}
+            favorite={favorite}
+            removeRM={removeRM}
           />
         )}
       </DivCharacters>

@@ -10,19 +10,13 @@ import {
   ButtonStyled,
 } from "../../components/List/listStyle";
 
-const CharacterList = ({
-  characterList,
-  filter,
-  removeFavoriteP,
-  favoriteP,
-}) => {
+const CharacterList = ({ characterList, filter, removeP, favorite }) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
   };
   return (
     <>
-      {console.log(favoriteP)}
       {filter.length !== 0
         ? filter.map((filtered, index) => (
             <StyledCard key={index}>
@@ -42,17 +36,8 @@ const CharacterList = ({
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled
-                  size="small"
-                  onClick={() => console.log(filtered)}
-                >
+                <ButtonStyled size="small" onClick={() => favorite(filtered)}>
                   <FavoriteIcon />
-                </ButtonStyled>
-                <ButtonStyled
-                  size="small"
-                  onClick={() => removeFavoriteP(filtered)}
-                >
-                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
@@ -75,19 +60,10 @@ const CharacterList = ({
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled
-                  size="small"
-                  onClick={() => {
-                    favoriteP(character);
-                    console.log(favoriteP);
-                  }}
-                >
+                <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
                 </ButtonStyled>
-                <ButtonStyled
-                  size="small"
-                  onClick={() => removeFavoriteP(character)}
-                >
+                <ButtonStyled size="small" onClick={() => removeP(character)}>
                   <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>

@@ -10,7 +10,7 @@ import {
   ButtonStyled,
 } from "../../components/List/listStyle";
 
-const CharacterList = ({ characterList, filter, favoriteRM }) => {
+const CharacterList = ({ characterList, filter, favorite, removeRM }) => {
   return (
     <>
       {filter.length !== 0
@@ -25,11 +25,8 @@ const CharacterList = ({ characterList, filter, favoriteRM }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favoriteRM(filter)}>
+                <ButtonStyled size="small" onClick={() => favorite(filter)}>
                   <FavoriteIcon />
-                </ButtonStyled>
-                <ButtonStyled size="small">
-                  <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>
             </StyledCard>
@@ -50,13 +47,10 @@ const CharacterList = ({ characterList, filter, favoriteRM }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled
-                  size="small"
-                  onClick={() => favoriteRM(character)}
-                >
+                <ButtonStyled size="small" onClick={() => favorite(character)}>
                   <FavoriteIcon />
                 </ButtonStyled>
-                <ButtonStyled size="small">
+                <ButtonStyled size="small" onClick={() => removeRM(character)}>
                   <FavoriteBorderIcon />
                 </ButtonStyled>
               </StyledCardActions>

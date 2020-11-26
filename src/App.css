@@ -1,10 +1,15 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #d0b8ac;
+  background: rgb(252, 241, 241);
+  background: radial-gradient(
+    circle,
+    rgba(252, 241, 241, 1) 0%,
+    rgba(208, 184, 172, 1) 100%
+  );
 }
 
-.App {
-  width: 100vw;
-  height: 100vh;
-}
+/* .App {
+  width: 200px;
+  height: 200px;
+} */

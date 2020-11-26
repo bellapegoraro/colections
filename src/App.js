@@ -1,12 +1,12 @@
 import "./App.css";
+import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Header from "./components/header/index";
 import { useState, useEffect } from "react";
-import Routes from "./components/Routes/index";
 import { Switch, Route } from "react-router-dom";
 import FavoritePokemon from "./pages/Pokemon/favoriteP";
-import ContainerRM from "./components/Containers/containerRM";
-import ContainerP from "./components/Containers/containerP";
+import RickAndMorty from "./pages/RickAndMorty/index";
+import Pokemon from "./pages/Pokemon/index";
 import FavoriteRickAndMorty from "./pages/RickAndMorty/favoriteRM";
 
 const App = () => {
@@ -14,21 +14,29 @@ const App = () => {
   const [myFavRM, setMyFavRM] = useState([]);
   const [myFavPokemon, setMyFavPokemon] = useState([]);
 
-  const favoriteP = (character) => {
-    setMyFavPokemon([...myFavPokemon, character]);
+  const favorite = (character) => {
+    console.log(character);
+    if (character.url !== undefined && character.id === undefined) {
+      setMyFavPokemon([...myFavPokemon, character]);
+      localStorage.setItem("myFavPokemon", JSON.stringify(myFavPokemon));
+    }
+    if (character.id !== undefined) {
+      setMyFavRM([...myFavRM, character]);
+      localStorage.setItem("myFavRM", JSON.stringify(myFavRM));
+    }
+  };
+
+  const removeP = (character) => {
+    const remove = myFavPokemon.filter((stay) => stay.name !== character.name);
+    setMyFavPokemon([...remove]);
     localStorage.setItem("myFavPokemon", JSON.stringify(myFavPokemon));
   };
 
-  const favoriteRM = (character) => {
-    setMyFavRM([...myFavRM, character]);
+  const removeRM = (character) => {
+    const remove = myFavRM.filter((stay) => stay.name !== character.name);
+    setMyFavRM([...remove]);
     localStorage.setItem("myFavRM", JSON.stringify(myFavRM));
   };
-
-  // const removeFavoriteP = (character) => {
-  //   // const remove = myFavPokemon.filter((stay) => stay.name !== character.name);
-  //   // setMyFavPokemon([...remove]);
-  //   console.log("iai");
-  // };
 
   useEffect(() => {
     const pokemon = JSON.parse(localStorage.getItem("myFavPokemon"));
@@ -39,28 +47,29 @@ const App = () => {
     if (rickAndMorty !== null) {
       setMyFavRM([...rickAndMorty]);
     }
-    console.log(pokemon);
-    console.log(rickAndMorty);
   }, []);
 
   return (
-    <div className="App">
-      {location.pathname === "/" ? <Header /> : null}
+    <>
+      <motion.div whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}>
+        {location.pathname === "/" ? <Header /> : null}
+      </motion.div>
+
       <Switch>
         <Route exact path="/list/:item">
-          <ContainerRM favoriteRM={favoriteRM} />
+          <RickAndMorty favorite={favorite} removeRM={removeRM} />
         </Route>
         <Route exact path="/list/:item">
-          <ContainerP favoriteP={favoriteP} />
+          <Pokemon favorite={favorite} removeP={removeP} />
         </Route>
         <Route exact path="/favorites/rick-and-morty">
-          <FavoriteRickAndMorty myFavRM={myFavRM} />
+          <FavoriteRickAndMorty myFavRM={myFavRM} removeRM={removeRM} />
         </Route>
         <Route exact path="/favorites/pokemons">
-          <FavoritePokemon myFavPokemon={myFavPokemon} />
+          <FavoritePokemon myFavPokemon={myFavPokemon} removeP={removeP} />
         </Route>
       </Switch>
-    </div>
+    </>
   );
 };
 
