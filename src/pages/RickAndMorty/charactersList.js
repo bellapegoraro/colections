@@ -1,5 +1,4 @@
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import {
@@ -47,12 +46,14 @@ const CharacterList = ({ characterList, filter, favorite, removeRM }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(character)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => {
+                    favorite(character);
+                  }}
+                >
                   <FavoriteIcon />
                 </ButtonStyled>
-                {/* <ButtonStyled size="small" onClick={() => removeRM(character)}>
-                  <FavoriteBorderIcon />
-                </ButtonStyled> */}
               </StyledCardActions>
             </StyledCard>
           ))}

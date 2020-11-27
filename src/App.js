@@ -4,10 +4,10 @@ import { useLocation } from "react-router-dom";
 import Header from "./components/header/index";
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import FavoritePokemon from "./pages/Pokemon/favoriteP";
+import FavoritePokemon from "./pages/Favorites/favoriteP";
 import RickAndMorty from "./pages/RickAndMorty/index";
 import Pokemon from "./pages/Pokemon/index";
-import FavoriteRickAndMorty from "./pages/RickAndMorty/favoriteRM";
+import FavoriteRickAndMorty from "./pages/Favorites/favoriteRM";
 
 const App = () => {
   const location = useLocation();
@@ -15,7 +15,6 @@ const App = () => {
   const [myFavPokemon, setMyFavPokemon] = useState([]);
 
   const favorite = (character) => {
-    console.log(character);
     if (character.url !== undefined && character.id === undefined) {
       setMyFavPokemon([...myFavPokemon, character]);
       localStorage.setItem("myFavPokemon", JSON.stringify(myFavPokemon));
