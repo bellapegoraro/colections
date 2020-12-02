@@ -45,8 +45,8 @@ const RickAndMorty = ({ favorite, removeRM }) => {
         handleFilter={handleFilter}
         handleInput={handleInput}
         page={page}
-        favorite={favorite}
-        removeRM={removeRM}
+        // favorite={favorite}
+        // removeRM={removeRM}
       />
     </div>
   );

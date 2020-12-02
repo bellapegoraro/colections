@@ -45,8 +45,8 @@ const Pokemon = ({ favorite, removeP }) => {
         handleFilter={handleFilter}
         handleInput={handleInput}
         page={page}
-        removeP={removeP}
-        favorite={favorite}
+        // removeP={removeP}
+        // favorite={favorite}
       />
     </div>
   );

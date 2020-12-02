@@ -8,8 +8,12 @@ import {
   StyledCardActions,
   ButtonStyled,
 } from "../../components/List/listStyle";
+import {
+  favoriteCharacterThunk,
+  removeCharacterThunk,
+} from "../../store/modules/Favorites/thunk";
 
-const CharacterList = ({ characterList, filter, removeP, favorite }) => {
+const CharacterList = ({ characterList, filter }) => {
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
     return brokenUrl[brokenUrl.length - 2];
@@ -35,7 +39,10 @@ const CharacterList = ({ characterList, filter, removeP, favorite }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(filtered)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => favoriteCharacterThunk(filtered)}
+                >
                   <FavoriteIcon />
                 </ButtonStyled>
               </StyledCardActions>
@@ -59,7 +66,10 @@ const CharacterList = ({ characterList, filter, removeP, favorite }) => {
                 </CardContent>
               </CardActionArea>
               <StyledCardActions>
-                <ButtonStyled size="small" onClick={() => favorite(character)}>
+                <ButtonStyled
+                  size="small"
+                  onClick={() => favoriteCharacterThunk(character)}
+                >
                   <FavoriteIcon />
                 </ButtonStyled>
               </StyledCardActions>

@@ -60,15 +60,15 @@ const List = ({
           <CharacterListPokemon
             characterList={characterList}
             filter={filter}
-            removeP={removeP}
-            favorite={favorite}
+            // removeP={removeP}
+            // favorite={favorite}
           />
         ) : (
           <CharacterListRickAndMorty
             characterList={characterList}
             filter={filter}
-            favorite={favorite}
-            removeRM={removeRM}
+            // favorite={favorite}
+            // removeRM={removeRM}
           />
         )}
       </DivCharacters>
