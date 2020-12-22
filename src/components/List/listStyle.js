@@ -30,7 +30,7 @@ export const StyledCardActions = styled(CardActions)`
 export const ButtonStyled = styled(Button)`
   width: 50%;
   :hover {
-    color: #d1a5a3;
+    color: #d6342d;
   }
 `;
 

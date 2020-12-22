@@ -1,10 +1,9 @@
 import { favoriteCharacter, removeCharacter } from "./actions";
 
 export const favoriteCharacterThunk = (favorite) => (dispatch) => {
-  //   const list = JSON.parse(localStorage.getItem("favorite")) || [];
-  //   list.push(favorite);
-  //   console.log(list, favorite);
-  //   localStorage.setItem("favorite", JSON.stringify(list));
+  const list = JSON.parse(localStorage.getItem("favorite")) || [];
+  list.push(favorite);
+  localStorage.setItem("favorite", JSON.stringify(list));
   dispatch(favoriteCharacter(favorite));
 };
 

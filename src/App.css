@@ -9,7 +9,40 @@ body {
   );
 }
 
-/* .App {
-  width: 200px;
-  height: 200px;
-} */
+.images {
+  display: flex;
+  width: 80vw;
+  justify-content: space-between;
+  margin: 100px 120px;
+}
+
+img {
+  width: 30vw;
+  height: 40vh;
+}
+
+.main {
+  width: 100vw;
+}
+
+.footer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 700px) {
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  .images {
+    align-items: center;
+    width: 80vw;
+    /* margin: 0 5vw; */
+  }
+
+  img {
+    width: 300px;
+  }
+}
