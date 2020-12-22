@@ -9,18 +9,6 @@ body {
   );
 }
 
-.images {
-  display: flex;
-  width: 80vw;
-  justify-content: space-between;
-  margin: 100px 120px;
-}
-
-img {
-  width: 30vw;
-  height: 40vh;
-}
-
 .main {
   width: 100vw;
 }

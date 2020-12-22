@@ -32,6 +32,9 @@ export const ButtonStyled = styled(Button)`
   :hover {
     color: #d6342d;
   }
+  :focus {
+    color: #d6342d;
+  }
 `;
 
 export const DivCharacters = styled.div`

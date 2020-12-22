@@ -7,12 +7,9 @@ const HomeImages = () => {
   return (
     <Container>
       <ImagesMobile>
-        <motion.div animate={{ x: 100 }} transition={{ duration: 1 }}>
-          <img alt="rickandmorty" src={ImageRM} />
-        </motion.div>
-        <motion.div animate={{ x: 100 }} transition={{ duration: 1 }}>
-          <img alt="pokemons" src={ImageP} />
-        </motion.div>
+        <img alt="rickandmorty" src={ImageRM} />
+
+        <img alt="pokemons" src={ImageP} />
       </ImagesMobile>
       <ImagesDesktop>
         <motion.div animate={{ x: 100 }} transition={{ duration: 1 }}>

@@ -1,6 +1,10 @@
-import { HeaderDiv, StyledLink, BackDiv, ButtonPages } from "./headerCStyles";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import HomeIcon from "@material-ui/icons/Home";
+import {
+  HeaderDiv,
+  StyledLink,
+  Div,
+  FavIcon,
+  HouseIcon,
+} from "./headerCStyles";
 import {
   getPokemonThunk,
   getRickAndMortyThunk,
@@ -10,34 +14,32 @@ const HeaderCharacters = ({ page }) => {
   const dispatch = useDispatch();
   return (
     <HeaderDiv>
-      <BackDiv>
+      <Div>
         <StyledLink to="/">
-          <HomeIcon />
+          <HouseIcon />
           Home
         </StyledLink>
-      </BackDiv>
+      </Div>
       <StyledLink to="/list/rick-and-morty">
-        <ButtonPages onClick={() => dispatch(getRickAndMortyThunk(page))}>
+        <Div onClick={() => dispatch(getRickAndMortyThunk(page))}>
           Rick And Morty
-        </ButtonPages>
+        </Div>
       </StyledLink>
       <StyledLink to="/list/pokemons">
-        <ButtonPages onClick={() => dispatch(getPokemonThunk(page))}>
-          Pokemons
-        </ButtonPages>
+        <Div onClick={() => dispatch(getPokemonThunk(page))}>Pokemons</Div>
       </StyledLink>
-      <BackDiv>
+      <Div>
         <StyledLink to="/favorites/rick-and-morty">
-          <FavoriteIcon />
+          <FavIcon />
           Rick And Morty
         </StyledLink>
-      </BackDiv>
-      <BackDiv>
+      </Div>
+      <Div>
         <StyledLink to="/favorites/pokemons">
-          <FavoriteIcon />
+          <FavIcon />
           Pokemons
         </StyledLink>
-      </BackDiv>
+      </Div>
     </HeaderDiv>
   );
 };

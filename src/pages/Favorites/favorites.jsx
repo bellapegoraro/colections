@@ -20,7 +20,6 @@ const Favorite = () => {
     (character) => character.image === undefined
   );
   const favoriteRM = favorite.filter((character) => character.type === "");
-  console.log(favoriteRM);
   const dispatch = useDispatch();
   const getUrlImagePokemon = (url) => {
     const brokenUrl = url.split("/");
